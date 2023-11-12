@@ -6,10 +6,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import HomeScreen from "./screens/HomeScreen";
 import ProfileScreen from "./screens/ProfileScreen";
-import SignUp_1 from "./screens/SignUp_1";
-import SignUp_2 from "./screens/SignUp_2";
-import SignUp_3 from "./screens/SignUp_3";
-import SignUp_4 from "./screens/SignUp_4";
 const Tab = createBottomTabNavigator();
 
 function BottomTabs() {
@@ -78,10 +74,6 @@ export default function StackNavigator() {
           component={BottomTabs}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="register_1" component={SignUp_1} options={{ headerShown: false }} />
-        <Stack.Screen name="register_2" component={SignUp_2} options={{ headerShown: false }} />
-        <Stack.Screen name="register_3" component={SignUp_3} options={{ headerShown: false }} />
-        <Stack.Screen name="register_4" component={SignUp_4} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
