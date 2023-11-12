@@ -1,4 +1,4 @@
-import { StyleSheet} from "react-native";
+import { StyleSheet } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Entypo, AntDesign, Ionicons } from "@expo/vector-icons";
@@ -6,6 +6,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import HomeScreen from "./screens/HomeScreen";
 import ProfileScreen from "./screens/ProfileScreen";
+import SignUp_1 from "./screens/SignUp_1";
+import SignUp_2 from "./screens/SignUp_2";
+import SignUp_3 from "./screens/SignUp_3";
+import SignUp_4 from "./screens/SignUp_4";
 const Tab = createBottomTabNavigator();
 
 function BottomTabs() {
@@ -68,12 +72,16 @@ const Stack = createNativeStackNavigator();
 export default function StackNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="register_1">
         <Stack.Screen
           name="Main"
           component={BottomTabs}
           options={{ headerShown: false }}
         />
+        <Stack.Screen name="register_1" component={SignUp_1} options={{ headerShown: false }} />
+        <Stack.Screen name="register_2" component={SignUp_2} options={{ headerShown: false }} />
+        <Stack.Screen name="register_3" component={SignUp_3} options={{ headerShown: false }} />
+        <Stack.Screen name="register_4" component={SignUp_4} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
