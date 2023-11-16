@@ -4,7 +4,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { Player } from "../PlayerContext";
 
-const SongItem = ({ item, onPress, isPlaying }) => {
+const SongItem = ({ item, onPress, isPlaying,navigation}) => {
   const { currentTrack, setCurrentTrack } = useContext(Player);
   const handlePress = () => {
     setCurrentTrack(item);
@@ -49,7 +49,9 @@ const SongItem = ({ item, onPress, isPlaying }) => {
         }}
       >
         <AntDesign name="heart" size={24} color="#1DB954" />
-        <Entypo name="dots-three-vertical" size={24} color="#C0C0C0" />
+        <Pressable onPress={()=>navigation.navigate("Action",{item:item})}>
+          <Entypo name="dots-three-vertical" size={24} color="#C0C0C0"/>
+        </Pressable>
       </View>
     </Pressable>
   );
