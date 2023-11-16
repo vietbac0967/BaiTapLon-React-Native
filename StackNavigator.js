@@ -1,12 +1,14 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Entypo, AntDesign, Ionicons } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
+import LoginScreen from "./screens/LoginScreen";
 import HomeScreen from "./screens/HomeScreen";
 import ProfileScreen from "./screens/ProfileScreen";
-import LoginScreen from "./screens/LoginScreen";
+import LikedSongsScreen from "./screens/LikedSongsScreen";
+import SongInfoScreen from "./screens/SongInfoScreen";
 const Tab = createBottomTabNavigator();
 
 function BottomTabs() {
@@ -69,7 +71,7 @@ const Stack = createNativeStackNavigator();
 export default function StackNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="register_1">
+      <Stack.Navigator>
         <Stack.Screen
           name="Login"
           component={LoginScreen}
@@ -80,9 +82,18 @@ export default function StackNavigator() {
           component={BottomTabs}
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="Liked"
+          component={LikedSongsScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Info"
+          component={SongInfoScreen}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({});
