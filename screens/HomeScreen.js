@@ -27,7 +27,7 @@ export default function HomeScreen() {
   const navigation = useNavigation();
   const [recentlyPlayed, setRecentlyPlayed] = useState([]);
   const [topArtists, setTopArtists] = useState([]);
-  const[episode,setEpisode] = useState([]);
+  const [episode, setEpisode] = useState([]);
 
   const greetingMessage = () => {
     const currentTime = new Date().getHours();
@@ -72,15 +72,11 @@ export default function HomeScreen() {
     } catch (err) {
       console.log(err.message);
     }
-  }
-
-
-  useEffect(() => {
-    getEpisode();
-  }, []);
+  };
 
   useEffect(() => {
     getRecentlyPlayedSongs();
+    getEpisode();
   }, []);
 
   const renderItem = ({ item }) => {
@@ -139,7 +135,7 @@ export default function HomeScreen() {
 
     getTopItems();
   }, []);
-  console.log(episode); 
+  console.log(episode);
   console.log(recentlyPlayed);
   console.log(topArtists);
 
@@ -221,7 +217,10 @@ export default function HomeScreen() {
             justifyContent: "space-between",
           }}
         >
-          <Pressable style={styles.badge}>
+          <Pressable
+            style={styles.badge}
+            onPress={() => navigation.navigate("Liked")}
+          >
             <LinearGradient colors={["#33006F", "#FFFFFF"]}>
               <Pressable
                 style={{
@@ -278,13 +277,11 @@ export default function HomeScreen() {
           )}
         ></FlatList>
         <Text style={styles.title}>Episodes for you</Text>
-          <FlatList
-            data={episode}
-            horizontal
-            renderItem={({ item }) => (
-              <EpisodeCart item={item}></EpisodeCart>
-            )}
-          ></FlatList>
+        <FlatList
+          data={episode}
+          horizontal
+          renderItem={({ item }) => <EpisodeCart item={item}></EpisodeCart>}
+        ></FlatList>
       </ScrollView>
     </LinearGradient>
   );
