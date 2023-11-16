@@ -9,6 +9,7 @@ import HomeScreen from "./screens/HomeScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import LikedSongsScreen from "./screens/LikedSongsScreen";
 import SongInfoScreen from "./screens/SongInfoScreen";
+import ActionSongCard from "./components/ActionSongCard";
 const Tab = createBottomTabNavigator();
 
 function BottomTabs() {
@@ -92,8 +93,12 @@ export default function StackNavigator() {
           component={SongInfoScreen}
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="Action"
+          component={ActionSongCard}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-

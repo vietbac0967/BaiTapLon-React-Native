@@ -315,7 +315,7 @@ const LikedSongsScreen = () => {
                   backgroundColor: "#1DB954",
                 }}
               >
-                <Entypo name="controller-play" size={24} color="white" />
+                <Entypo name="controller-play" size={30} color="black" />
               </Pressable>
             </View>
           </Pressable>
@@ -331,6 +331,7 @@ const LikedSongsScreen = () => {
                   item={item}
                   onPress={play}
                   isPlaying={item === currentTrack}
+                  navigation={navigation}
                 />
               )}
             />
@@ -409,12 +410,29 @@ const LikedSongsScreen = () => {
                 size={24}
                 color="white"
               />
-
-              <Text
-                style={{ fontSize: 14, fontWeight: "bold", color: "white" }}
-              >
-                {currentTrack?.track?.name}
-              </Text>
+              <View>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    fontWeight: "500",
+                    color: "white",
+                    padding: 3,
+                    textAlign: "center  ",
+                  }}
+                >
+                  PLAYING FROM YOUR LIBRARY
+                </Text>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    fontWeight: "bold",
+                    color: "white",
+                    textAlign: "center",
+                  }}
+                >
+                  {currentTrack?.track?.name}
+                </Text>
+              </View>
 
               <Entypo name="dots-three-vertical" size={24} color="white" />
             </Pressable>
