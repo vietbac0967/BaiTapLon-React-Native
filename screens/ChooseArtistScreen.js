@@ -6,7 +6,7 @@ const ChooseArtistScreen = () => {
     const [artists, setArtists] = useState([]);
     const [accessToken, setAccessToken] = useState('');
     const [Input, setInput] = useState('');
-
+    const [selectArtist, setselectArtist] = useState([]);
     const [clientId, setClientId] = useState('55a38015100e40a1bc86447cf06b5100');
     const [clientSecret, setClientSecret] = useState('d183339823374756b845d650bc353489');
     useEffect(() => {
@@ -56,7 +56,7 @@ const ChooseArtistScreen = () => {
     }
 
     async function getArtist(input) {
-        console.log(accessToken);
+        // console.log(accessToken);
 
         const requestOptions = {
             method: 'GET',
@@ -69,7 +69,7 @@ const ChooseArtistScreen = () => {
         try {
             if (input === '') setInput('a')
             const response = await fetch(`https://api.spotify.com/v1/search?q=${input}&type=artist`, requestOptions);
-            console.log(response);
+            // console.log(response);
 
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -77,22 +77,29 @@ const ChooseArtistScreen = () => {
 
             const data = await response.json();
             setArtists(data.artists.items);
-            console.log('Danh sách nghệ sĩ:', data.artists.items);
+            // console.log('Danh sách nghệ sĩ:', data.artists.items);
         } catch (error) {
             console.error('Có lỗi xảy ra:', error);
         }
     }
+    console.log(selectArtist);
+
     function Item({ item }) {
         let url = ''
         if (item.images[1] === undefined) return
         else {
-            console.log(item.images[0]);
+            // console.log(item.images[0]);
             url = item.images[0].url
         }
         return (
             <Pressable
                 onPress={() => {
+                    if (selectArtist.length === 3 || selectArtist.includes(item.id)) {
+                        return
+                    }
                     console.log(item.id);
+                    setselectArtist([...selectArtist, item.id])
+                    console.log(selectArtist);
                 }}>
                 <View style={{
                     // backgroundColor: '#333',
@@ -109,7 +116,7 @@ const ChooseArtistScreen = () => {
                         height: 110,
                         borderRadius: 50
                     }} source={{ uri: url }} />
-                    <Text style={{ color: 'white' }}>{item.name}</Text>
+                    <Text style={{ color: 'white', width: 100, height: 20, overflow: 'hidden' }}>{item.name}</Text>
                 </View>
             </Pressable>
         )
@@ -121,12 +128,26 @@ const ChooseArtistScreen = () => {
                 <Text style={{ color: '#fff', fontWeight: '700', fontSize: 16 }}>Choose 3 or more artists you like.</Text>
                 <View></View>
             </View>
-            <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#F5F5F5', width: '100%' }}>
-                <AntDesign name="search1" size={24} color="black" />
+            <View style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                backgroundColor: '#F5F5F5',
+                width: '100%',
+                borderRadius: 5
+            }}>
+                <AntDesign name="search1" size={24} color="black" style={{ marginLeft: 10 }} />
                 <TextInput
+
                     onChangeText={(value) => setInput(value)}
                     placeholder='Search'
-                    style={{ paddingHorizontal: 20, height: 50, fontSize: 16, width: '100%' }} />
+                    style={{
+                        paddingHorizontal: 20,
+                        height: 50,
+                        fontSize: 16,
+                        width: '100%',
+                        outlineStyle: 'none',
+                        fontSize: 16
+                    }} />
 
             </View>
             <FlatList
