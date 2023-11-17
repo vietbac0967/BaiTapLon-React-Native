@@ -1,6 +1,4 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import Navigation from "./StackNavigator";
+
 import SignupScreen from "./screens/SignupScreen";
 import { PlayerContext } from "./PlayerContext";
 import { ModalPortal } from "react-native-modals";
