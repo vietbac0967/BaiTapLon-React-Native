@@ -10,6 +10,7 @@ import ProfileScreen from "./screens/ProfileScreen";
 import LikedSongsScreen from "./screens/LikedSongsScreen";
 import SongInfoScreen from "./screens/SongInfoScreen";
 import ActionSongCard from "./components/ActionSongCard";
+import SearchScreen from "./screens/SearchScreen";
 const Tab = createBottomTabNavigator();
 
 function BottomTabs() {
@@ -49,10 +50,25 @@ function BottomTabs() {
         }}
       />
       <Tab.Screen
+        name="Search"
+        component={SearchScreen}
+        options={{
+          tabBarLabel: "Search",
+          headerShown: false,
+          tabBarLabelStyle: { color: "white" },
+          tabBarIcon: ({ focused }) =>
+            focused ? (
+              <Ionicons name="search" size={24} color="white" />
+            ) : (
+              <Ionicons name="search-outline" size={24} color="white" />
+            ),
+        }}
+      />
+      <Tab.Screen
         name="Profile"
         component={ProfileScreen}
         options={{
-          tabBarLabel: "Home",
+          tabBarLabel: "Profile",
           headerShown: false,
           tabBarLabelStyle: { color: "white" },
           tabBarIcon: ({ focused }) =>
