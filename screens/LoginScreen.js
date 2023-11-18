@@ -91,7 +91,7 @@ export default function LoginScreen() {
   return (
     <LinearGradient colors={["#040306", "#131624"]} style={{ flex: 1 }}>
       <SafeAreaView>
-        <View style={{ height: 80 }} />
+        <View style={{}} />
         <Entypo
           style={{ textAlign: "center" }}
           name="spotify"
@@ -142,6 +142,11 @@ export default function LoginScreen() {
           <Entypo name="facebook-with-circle" size={24} color="blue" />
           <Text style={styles.text}>Sign In with facebook</Text>
         </Pressable>
+
+        <Pressable onPress={()=>navigation.navigate("Signup")}>
+          <Text style={{textAlign:"center",color:"white"}}>Register</Text>
+        </Pressable>
+
       </SafeAreaView>
     </LinearGradient>
   );

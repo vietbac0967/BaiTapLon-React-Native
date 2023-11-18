@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Entypo, AntDesign, Ionicons } from "@expo/vector-icons";
+import { Entypo, AntDesign, Ionicons, FontAwesome } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import LoginScreen from "./screens/LoginScreen";
@@ -11,9 +11,16 @@ import LikedSongsScreen from "./screens/LikedSongsScreen";
 import SongInfoScreen from "./screens/SongInfoScreen";
 import ActionSongCard from "./components/ActionSongCard";
 import SearchScreen from "./screens/SearchScreen";
+import SettingScreen from "./screens/SettingScreen";
+import ChooseArtistScreen from "./screens/ChooseArtistScreen";
+import SignupScreen from "./screens/SignupScreen";
+import LibraryScreen from "./screens/LibraryScreen";
+import AlbumScreen from "./screens/AlbumScreen";
+import TracksAlbumScreen from "./screens/TracksAlbumScreen";
+import YourEpisodeScreen from "./screens/YourEpisodeScreen";
 const Tab = createBottomTabNavigator();
 
-function BottomTabs() {
+function BottomTabs({navigation}) {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -48,6 +55,12 @@ function BottomTabs() {
               <AntDesign name="home" size={24} color="white" />
             ),
         }}
+        listeners={({ navigation,route }) => ({
+          tabPress: e => {
+            e.preventDefault();
+            navigation.navigate('Home')
+          }
+        })}
       />
       <Tab.Screen
         name="Search"
@@ -63,6 +76,33 @@ function BottomTabs() {
               <Ionicons name="search-outline" size={24} color="white" />
             ),
         }}
+        listeners={({ navigation,route }) => ({
+          tabPress: e => {
+            e.preventDefault();
+            navigation.navigate('Search')
+          }
+        })}
+      />
+      <Tab.Screen
+        name="Library"
+        component={LibraryScreen}
+        options={{
+          tabBarLabel: "Library",
+          headerShown: false,
+          tabBarLabelStyle: { color: "white" },
+          tabBarIcon: ({ focused }) =>
+            focused ? (
+              <Ionicons name="library" size={24} color="white" />
+            ) : (
+              <Ionicons name="library-outline" size={24} color="white" />
+            ),
+        }}
+        listeners={({ navigation,route }) => ({
+          tabPress: e => {
+            e.preventDefault();
+            navigation.navigate('Library')
+          }
+        })}
       />
       <Tab.Screen
         name="Profile"
@@ -73,9 +113,9 @@ function BottomTabs() {
           tabBarLabelStyle: { color: "white" },
           tabBarIcon: ({ focused }) =>
             focused ? (
-              <Ionicons name="person" size={24} color="white" />
+              <FontAwesome name="spotify" size={24} color="white" />
             ) : (
-              <Ionicons name="person-outline" size={24} color="white" />
+              <Entypo name="spotify-with-circle" size={24} color="white" />
             ),
         }}
       />
@@ -114,6 +154,36 @@ export default function StackNavigator() {
           component={ActionSongCard}
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="Setting"
+          component={SettingScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Choose"
+          component={ChooseArtistScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Signup"
+          component={SignupScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Album"
+          component={AlbumScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Tracks"
+          component={TracksAlbumScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Episode"
+          component={YourEpisodeScreen}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );
