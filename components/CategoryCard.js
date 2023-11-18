@@ -14,13 +14,14 @@ const colors = [
 function random(mn, mx) {
   return Math.random() * (mx - mn) + mn;
 }
-const color = colors[Math.floor(random(0, 8))];
 export default function CategoryCard({ item }) {
+  const color = colors[Math.floor(random(0, 8))];
   return (
-    <View style={styles.card}>
+    <View style={[styles.card, { backgroundColor: color }]}>
       <Text style={styles.text}>{item?.name}</Text>
       <View style={styles.imageContainer}>
         <Image
+          resizeMode="cover"
           style={styles.image}
           source={{ uri: item?.icons[0].url }}
         ></Image>
@@ -32,12 +33,9 @@ export default function CategoryCard({ item }) {
 const styles = StyleSheet.create({
   card: {
     flexDirection: "row",
-    width: 192,
+    width: 180,
     height: 109,
     borderRadius: 4,
-    backgroundColor: color,
-    marginVertical: 10,
-    marginHorizontal: 10,
     alignItems: "center",
   },
   text: {
@@ -51,7 +49,6 @@ const styles = StyleSheet.create({
   image: {
     height: 67.331,
     width: 67.331,
-    resizeMode: "cover",
     justifyContent: "flex-end",
   },
   imageContainer: {

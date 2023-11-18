@@ -24,7 +24,7 @@ export default function SearchScreen() {
           Authorization: `Bearer ${accessToken}`,
         },
       });
-    
+
       console.log(response.data.categories.items);
       const categories = response.data.categories.items;
       setCategory(categories);
@@ -62,7 +62,7 @@ export default function SearchScreen() {
         <AntDesign name="search1" size={20} color="black" />
         <TextInput
           placeholderTextColor={"rgba(19, 19, 19, 1)"}
-          placeholder="Artists, songs, or podcasts"
+          placeholder="What do you want to listen to?"
           style={{
             fontWeight: "500",
             color: "black",
@@ -72,12 +72,17 @@ export default function SearchScreen() {
         />
       </Pressable>
       <View style={styles.content}>
-        <Text style={{ color: "white",fontSize:16,fontWeight:"600" }}>Browse all</Text>
+        <Text style={{ color: "white", fontSize: 16, fontWeight: "600" }}>
+          Browse all
+        </Text>
         <FlatList
           data={category}
           renderItem={({ item }) => <CategoryCard item={item} />}
           numColumns={2}
-          columnWrapperStyle={{ justifyContent: "space-around" }}
+          columnWrapperStyle={{
+            justifyContent: "space-between",
+            marginVertical: 5,
+          }}
         ></FlatList>
       </View>
     </ScrollView>

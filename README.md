@@ -11,7 +11,7 @@
 ![UI](screenshots/authencation-screen.png)
 
 - username: vietbacnguyen2002@gmail.com
-- password: 091979818Viet_bac
+- password: Vipvietbac2002
 -Sau khi xác nhận tài khoản và mật khẩu người dùng chọn tiếp tục
 
 ![UI](screenshots/authorize-screen.png)

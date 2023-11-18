@@ -169,12 +169,14 @@ export default function HomeScreen() {
               color="white"
               style={{ padding: 5, paddingTop: 10 }}
             />
-            <SimpleLineIcons
-              name="settings"
-              size={22}
-              color="white"
-              style={{ paddingTop: 10, paddingHorizontal: 5 }}
-            />
+            <Pressable onPress={() => navigation.navigate("Setting")}>
+              <SimpleLineIcons
+                name="settings"
+                size={22}
+                color="white"
+                style={{ paddingTop: 10, paddingHorizontal: 5 }}
+              />
+            </Pressable>
           </View>
         </View>
 
