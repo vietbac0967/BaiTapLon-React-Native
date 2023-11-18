@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Entypo, AntDesign, Ionicons } from "@expo/vector-icons";
+import { Entypo, AntDesign, Ionicons, SimpleLineIcons } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import LoginScreen from "./screens/LoginScreen";
@@ -11,6 +11,7 @@ import LikedSongsScreen from "./screens/LikedSongsScreen";
 import SongInfoScreen from "./screens/SongInfoScreen";
 import ActionSongCard from "./components/ActionSongCard";
 import SearchScreen from "./screens/SearchScreen";
+import PremiumScreen from "./screens/PremiumScreen";
 const Tab = createBottomTabNavigator();
 
 function BottomTabs() {
@@ -76,6 +77,21 @@ function BottomTabs() {
               <Ionicons name="person" size={24} color="white" />
             ) : (
               <Ionicons name="person-outline" size={24} color="white" />
+            ),
+        }}
+      />
+      <Tab.Screen
+        name="Premium"
+        component={PremiumScreen}
+        options={{
+          tabBarLabel: "Premium",
+          headerShown: false,
+          tabBarLabelStyle: { color: "white" },
+          tabBarIcon: ({ focused }) =>
+            focused ? (
+              <Entypo name="spotify" size={24} color="white" />
+            ) : (
+              <SimpleLineIcons name="social-spotify" size={24} color="white" />
             ),
         }}
       />
