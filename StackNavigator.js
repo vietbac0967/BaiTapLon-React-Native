@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Entypo, AntDesign, Ionicons, FontAwesome } from "@expo/vector-icons";
+import { Entypo, AntDesign, Ionicons, FontAwesome, SimpleLineIcons } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import LoginScreen from "./screens/LoginScreen";
@@ -11,16 +11,18 @@ import LikedSongsScreen from "./screens/LikedSongsScreen";
 import SongInfoScreen from "./screens/SongInfoScreen";
 import ActionSongCard from "./components/ActionSongCard";
 import SearchScreen from "./screens/SearchScreen";
-import SettingScreen from "./screens/SettingScreen";
-import ChooseArtistScreen from "./screens/ChooseArtistScreen";
-import SignupScreen from "./screens/SignupScreen";
-import LibraryScreen from "./screens/LibraryScreen";
-import AlbumScreen from "./screens/AlbumScreen";
-import TracksAlbumScreen from "./screens/TracksAlbumScreen";
-import YourEpisodeScreen from "./screens/YourEpisodeScreen";
+import SettingScreen from './screens/SettingScreen';
+import PremiumScreen from './screens/PremiumScreen';
+import ChooseArtistScreen from './screens/ChooseArtistScreen';
+import SignupScreen from './screens/SignupScreen';
+import AlbumScreen from './screens/AlbumScreen';
+import TracksAlbumScreen from './screens/TracksAlbumScreen';
+import YourEpisodeScreen from './screens/YourEpisodeScreen';
+import LibraryScreen from './screens/LibraryScreen';
+
 const Tab = createBottomTabNavigator();
 
-function BottomTabs({navigation}) {
+function BottomTabs({ navigation }) {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -55,7 +57,7 @@ function BottomTabs({navigation}) {
               <AntDesign name="home" size={24} color="white" />
             ),
         }}
-        listeners={({ navigation,route }) => ({
+        listeners={({ navigation, route }) => ({
           tabPress: e => {
             e.preventDefault();
             navigation.navigate('Home')
@@ -76,7 +78,7 @@ function BottomTabs({navigation}) {
               <Ionicons name="search-outline" size={24} color="white" />
             ),
         }}
-        listeners={({ navigation,route }) => ({
+        listeners={({ navigation, route }) => ({
           tabPress: e => {
             e.preventDefault();
             navigation.navigate('Search')
@@ -97,7 +99,7 @@ function BottomTabs({navigation}) {
               <Ionicons name="library-outline" size={24} color="white" />
             ),
         }}
-        listeners={({ navigation,route }) => ({
+        listeners={({ navigation, route }) => ({
           tabPress: e => {
             e.preventDefault();
             navigation.navigate('Library')
@@ -105,17 +107,17 @@ function BottomTabs({navigation}) {
         })}
       />
       <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
+        name="Premium"
+        component={PremiumScreen}
         options={{
-          tabBarLabel: "Profile",
+          tabBarLabel: "Premium",
           headerShown: false,
           tabBarLabelStyle: { color: "white" },
           tabBarIcon: ({ focused }) =>
             focused ? (
-              <FontAwesome name="spotify" size={24} color="white" />
+              <Entypo name="spotify" size={24} color="white" />
             ) : (
-              <Entypo name="spotify-with-circle" size={24} color="white" />
+              <SimpleLineIcons name="social-spotify" size={24} color="white" />
             ),
         }}
       />
