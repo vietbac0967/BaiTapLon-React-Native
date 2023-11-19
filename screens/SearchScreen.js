@@ -12,8 +12,10 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { EvilIcons, AntDesign } from "@expo/vector-icons";
 import CategoryCard from "../components/CategoryCard";
+import { useNavigation } from "@react-navigation/native";
 export default function SearchScreen() {
   const [category, setCategory] = useState([]);
+  const navigation = useNavigation()
   const getCategories = async () => {
     const accessToken = await AsyncStorage.getItem("token");
     try {
@@ -46,6 +48,9 @@ export default function SearchScreen() {
         <EvilIcons name="camera" size={30} color="white" />
       </View>
       <Pressable
+        onPress={() => {
+          navigation.navigate('SearchResult')
+        }}
         style={{
           flexDirection: "row",
           alignItems: "center",
