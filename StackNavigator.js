@@ -19,6 +19,7 @@ import AlbumScreen from './screens/AlbumScreen';
 import TracksAlbumScreen from './screens/TracksAlbumScreen';
 import YourEpisodeScreen from './screens/YourEpisodeScreen';
 import LibraryScreen from './screens/LibraryScreen';
+import SearchResultScreen from "./screens/SearchResultScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -184,6 +185,11 @@ export default function StackNavigator() {
         <Stack.Screen
           name="Episode"
           component={YourEpisodeScreen}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="SearchResult"
+          component={SearchResultScreen}
           options={{ headerShown: false }}
         ></Stack.Screen>
       </Stack.Navigator>
