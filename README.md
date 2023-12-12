@@ -10,8 +10,7 @@
 - Người dùng nhấn vào nút Sign in with Spotify, chuyển đến mà hình xác nhận người dùng
 ![UI](screenshots/authencation-screen.png)
 
-- username: vietbacnguyen2002@gmail.com
-- password: Vipvietbac2002
+  
 -Sau khi xác nhận tài khoản và mật khẩu người dùng chọn tiếp tục
 
 ![UI](screenshots/authorize-screen.png)
